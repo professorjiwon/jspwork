@@ -12,8 +12,8 @@
 	String color = request.getParameter("color");
 	/* 
 	switch(color) {
-	case "blue":
-		msg = "파란색";
+	case "green":
+		msg = "초록색";
 		break;
 	case "yellow":
 		msg = "노란색";
@@ -26,8 +26,8 @@
 	}
 	 */
 	 
-	if(color.equals("blue")) 
-		msg = "파란색";
+	if(color.equals("green")) 
+		msg = "초록색";
 	else if(color.equals("green")) 
 		msg = "초록색";
 	else if(color.equals("pink")) 
