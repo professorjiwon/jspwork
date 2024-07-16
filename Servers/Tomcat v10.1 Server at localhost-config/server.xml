@@ -142,7 +142,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="ch01_scriptlet" path="/ch01_scriptlet" reloadable="true" source="org.eclipse.jst.jee.server:ch01_scriptlet"/><Context docBase="ch02_page지시자" path="/ch02_page지시자" reloadable="true" source="org.eclipse.jst.jee.server:ch02_page지시자"/><Context docBase="ch03_request_response" path="/ch03_request_response" reloadable="true" source="org.eclipse.jst.jee.server:ch03_request_response"/><Context docBase="ch04_servlet" path="/ch04_servlet" reloadable="true" source="org.eclipse.jst.jee.server:ch04_servlet"/></Host>
+      <Context docBase="ch01_scriptlet" path="/ch01_scriptlet" reloadable="true" source="org.eclipse.jst.jee.server:ch01_scriptlet"/><Context docBase="ch02_page지시자" path="/ch02_page지시자" reloadable="true" source="org.eclipse.jst.jee.server:ch02_page지시자"/><Context docBase="ch03_request_response" path="/ch03_request_response" reloadable="true" source="org.eclipse.jst.jee.server:ch03_request_response"/><Context docBase="ch04_servlet" path="/ch04_servlet" reloadable="true" source="org.eclipse.jst.jee.server:ch04_servlet"/><Context docBase="ch05_bean" path="/ch05_bean" reloadable="true" source="org.eclipse.jst.jee.server:ch05_bean"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -39,4 +39,24 @@
     <servlet-name>GetServlet3</servlet-name>
     <url-pattern>/GetServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostServlet4</display-name>
+    <servlet-name>PostServlet4</servlet-name>
+    <servlet-class>PostServlet4</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostServlet4</servlet-name>
+    <url-pattern>/PostServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet5</display-name>
+    <servlet-name>LoginServlet5</servlet-name>
+    <servlet-class>LoginServlet5</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet5</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
