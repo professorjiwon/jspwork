@@ -25,6 +25,20 @@
 			<th>TITLE</th>
 			<th>LOCATION</th>
 		</tr>
+<% 
+	while(rs.next()) {
+		String id = rs.getString(1);
+		String title = rs.getString(2);
+		String location = rs.getString(3);
+%>
+		<tr>
+			<td><%=id %></td>
+			<td><%=title %></td>
+			<td><%=location %></td>
+		</tr>
+<%
+	}
+%>	
 	</table>
 <%
 	} catch(Exception e) {
