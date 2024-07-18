@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Cookie 로그인</h1>
-	<form action="" method="post">
+	<form action="04.2.cookieLoginProc.jsp" method="post">
 		ID : <input name="id"><p/>
 		PW : <input type="password" name="pwd"><p/>
 		<input type="submit" value="login">
