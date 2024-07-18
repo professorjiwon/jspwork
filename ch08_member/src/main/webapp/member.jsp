@@ -155,7 +155,7 @@
 				<td colspan="3" align="center">
 					<input type="button" value="회원가입">&emsp;
 					<input type="reset" value="다시쓰기">&emsp;
-					<input type="button" value="로그인">
+					<input type="button" value="로그인" onclick="location.href='login.jsp'">
 				</td>
 			</tr>
 		</table>
