@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,38 @@
         height:30px;
         }
 </style>
+<script src="script.js" charset="utf-8"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	function findAddr() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            let roadAddr = data.roadAddress;  // 도로명주소
+	            let jibunAddr = data.jibunAddress;	// 지번주소
+	            let extraAddr = '';
+	            
+	            document.getElementById("postcode").value = data.zonecode;
+	            if(data.userSelectedType == 'R') {	// 사용자가 도로명을 선택했을 때
+	            	if(data.bname != '') {
+	            		extraAddr += data.bname;		// 동이름
+	            	}
+	            	if(data.buildingName != '') {
+	            		extraAddr += ', ' + data.buildingName;
+	            	}
+	            	roadAddr += extraAddr != '' ? '(' +  extraAddr + ')' : '';
+					document.getElementById('addr').value = roadAddr;
+	            } else {
+	            	if(data.buildingName != '') {
+	            		extraAddr += data.buildingName;
+	            	}
+	            	jibunAddr += extraAddr != '' ? '(' +  extraAddr + ')' : '';
+	            	document.getElementById('addr').value = jibunAddr;
+	            }
+	            document.getElementById('detailAddr').focus();
+	        }
+	    }).open();
+	}
+</script>
 </head>
 <body>
 	<form name="frm" method ="post" action="memberProc.jsp">
@@ -27,7 +61,7 @@
 				<td>아이디</td>
 				<td>
 					<input name="id">				 	   			 
-					<input type="button" value="ID중복확인"> 
+					<input type="button" value="ID중복확인" onclick="idCheck(this.form.id.value);"> 
 				</td>
 				<td>영문과 숫자로만 입력하세요</td>
 			</tr>
@@ -77,16 +111,16 @@
 			<tr>
 				<td>우편번호</td>
 				<td>
-					<input name="zipcode" id="postcode">
-					<input type="button" value="우편번호 찾기">
+					<input name="zipcode" id="postcode" readonly>
+					<input type="button" value="우편번호 찾기" onclick="findAddr();">
 				</td>
 				<td>우편번호를 검색하세요</td>
 			</tr>
 			<tr>
 				<td>주소</td>
 				<td>
-					<input name="address" id="addr" size="60"><br/>
-					<input name="detail_address" id="detailAddr">
+					<input name="address" id="addr" size="60" readonly><br/>
+					<input name="detail_address" id="detailAddr" placeholder="상세주소 넣기">
 				</td>
 				<td>상세주소가 있으면 입력해주세요</td>
 			</tr>
