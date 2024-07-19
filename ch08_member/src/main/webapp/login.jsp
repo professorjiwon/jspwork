@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	로그인 되었습니다
 </body>
 </html>

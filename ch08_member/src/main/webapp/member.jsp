@@ -18,7 +18,7 @@
         height:30px;
         }
 </style>
-<script src="script.js?ver=1" charset="utf-8"></script>
+<script src="script.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	function findAddr() {

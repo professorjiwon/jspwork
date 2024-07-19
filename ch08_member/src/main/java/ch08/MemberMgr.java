@@ -47,12 +47,13 @@ public class MemberMgr {
 			pstmt.setString(7, bean.getZipcode());
 			pstmt.setString(8, bean.getAddress());
 			pstmt.setString(9, bean.getDetail_address());
-			String[] hobby = bean.getHobby();
+			
+			String[] hobby = bean.getHobby(); 
 			char hb[] = {'0','0','0','0','0'};
 			String lists[] = {"인터넷","여행","게임","영화","운동"};
 			if(hobby != null) {
-				for(int i=0; i<hobby.length; i++) {
-					for(int j=0; j<lists.length; j++) {
+				for(int i=0; i<hobby.length; i++) { 
+					for(int j=0; j<lists.length; j++) { 
 						if(hobby[i].equals(lists[j])) {
 							hb[j] = '1';
 							break;
@@ -60,14 +61,17 @@ public class MemberMgr {
 					}
 				}
 			}
+			
+			pstmt.setString(10, new String(hb));
+			pstmt.setString(11, bean.getJob());
+			if(pstmt.executeUpdate() == 1) { // 반환값 : insert가 안되었을 때 0반환, insert가 잘 되었을 때 1반환 
+				flag = true;
+			}  
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
 		}
+		return flag;
 	}
-	
-	
-	
-	
-	
-	
 }
