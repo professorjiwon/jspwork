@@ -3,6 +3,7 @@ package ch09;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class VoteDao {
 	private DBConnectionMgr pool;
@@ -54,6 +55,46 @@ public class VoteDao {
 			pool.freeConnection(con);
 		}
 		return flag;
+	}
+	
+	// 설문폼(투표하기)에 넣을 질문1개 가져오기
+	public VoteList getOneVote(int num) {
+		VoteList vlist = new VoteList();
+		
+		try {
+			con = pool.getConnection();
+			sql = "select * from votelist where num=" + num;
+			rs = con.createStatement().executeQuery(sql);
+			if(rs.next()) {
+				vlist.setQuestion(rs.getString("question"));
+				vlist.setType(rs.getInt("Type"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return vlist;
+	}
+	
+	// 설문폼(투표하기)에 넣을 item들 가져오기
+	public ArrayList<String> getItem(int num) {
+		ArrayList<String> alist = new ArrayList<String>();
+		
+		try {
+			con = pool.getConnection();
+			sql = "select item from voteitem where listnum=" + num;
+			rs = con.createStatement().executeQuery(sql);
+			while(rs.next()) {
+				alist.add(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return alist;
 	}
 }
 
