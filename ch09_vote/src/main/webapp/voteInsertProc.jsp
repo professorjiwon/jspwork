@@ -15,7 +15,20 @@
 	
 	vList.setSdate(sdate);
 	vList.setEdate(edate);
-%>  
+	
+	boolean result = vDao.voteInsert(vList, vItem);
+	
+	String msg = "설문 추가에 실패하였습니다.";
+	String location = "voteInsert.jsp";
+	if(result) {
+		msg = "설문이 추가 되었습니다.";
+		location = "voteList.jsp";
+	}
+%>
+<script>
+	alert("<%=msg %>");
+	location.href = "<%=location %>";
+</script>  
 <!DOCTYPE html>
 <html>
 <head>
