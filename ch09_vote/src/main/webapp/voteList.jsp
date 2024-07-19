@@ -23,8 +23,7 @@
 		<h2 class="m50">투표 프로그램</h2>
 		<hr>
 			
-		<h5 class="m30">설문폼</h5>
-		
+		<jsp:include page="voteForm.jsp" />
 		<hr>
 		
 		<h5 class="m30">설문리스트</h5>
