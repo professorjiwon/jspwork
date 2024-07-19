@@ -14,8 +14,6 @@
 	.m50 {margin-top:50px;}
 	.m30 {margin-top:30px;}
 	table {margin-top: 30px; width:600px;}
-	table th {text-align:center;}
-	a {text-decoration:none; color:black; cursor:pointer;}
 </style>
 </head>
 <body>
@@ -131,8 +129,3 @@
 	</div>
 </body>
 </html>
-
-
-
-
-
