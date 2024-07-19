@@ -14,6 +14,7 @@
 	.m50 {margin-top:50px;}
 	.m30 {margin-top:30px;}
 	table {margin-top: 30px; width:800px;}
+	table th {text-align:center;}
 	a {text-decoration:none; color:black; cursor:pointer;}
 </style>
 </head>
@@ -23,6 +24,7 @@
 		<hr>
 			
 		<h5 class="m30">설문폼</h5>
+		
 		<hr>
 		
 		<h5 class="m30">설문리스트</h5>
@@ -32,6 +34,7 @@
 				<th>제목</th>
 				<th>시작일~종료일</th>
 			</tr>
+			
 			<tr>
 				<td colspan="3" align="right"><a href="">설문 작성하기</a><td>
 			</tr>
