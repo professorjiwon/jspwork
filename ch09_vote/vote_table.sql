@@ -17,10 +17,10 @@ COMMENT ON COLUMN VOTELIST.TYPE IS '중복투표허용여부';
 COMMENT ON COLUMN VOTELIST.ACTIVE IS '설문활성화여부';
 
 CREATE TABLE voteitem (
-  listnum NUMBER,
-  itemnum NUMBER,
+  listnum number,
+  itemnum number,
   item varchar2(50),
-  count NUMBER DEFAULT 0,
+  count number DEFAULT 0,
   PRIMARY KEY (listnum, itemnum)
 ); 
 
