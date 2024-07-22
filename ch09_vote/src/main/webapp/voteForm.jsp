@@ -58,6 +58,7 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" name="num" value="<%=num %>" >
 		</form>
 	</div>
 </body>
