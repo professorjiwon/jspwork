@@ -21,11 +21,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-	.divView {width:450px; margin-top:10px; margin-left:20px;}
+	.divView {width:450px; margin:20px 0 0 40px;}
 </style>
 </head>
 <body>
-	<div class="divView">
+	<div class="divView" >
 		<table class="table">
 			<tr>
 				<th colspan="4">Q : <%=vlist.getQuestion() %><th>
