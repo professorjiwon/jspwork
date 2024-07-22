@@ -54,7 +54,7 @@
 				<tr>
 					<td align="center">
 						<input type="submit" value=" 투 표 ">&emsp;&emsp;
-						<input type="button" value=" 결 과 ">
+						<input type="button" value=" 결 과 " onclick="window.open('voteView.jsp?num=<%=num%>', 'voteView', 'width=600, height=400')">
 					</td>
 				</tr>
 			</table>
