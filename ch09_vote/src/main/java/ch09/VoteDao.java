@@ -63,7 +63,11 @@ public class VoteDao {
 		
 		try {
 			con = pool.getConnection();
-			sql = "select * from votelist where num=" + num;
+			if(num == 0)
+				sql = "select * from votelist order by num desc";
+			else
+				sql = "select * from votelist where num=" + num;
+			
 			rs = con.createStatement().executeQuery(sql);
 			if(rs.next()) {
 				vlist.setQuestion(rs.getString("question"));
@@ -77,12 +81,32 @@ public class VoteDao {
 		return vlist;
 	}
 	
+	public int getMaxNum() {
+		int max = 0;
+		try {
+			con = pool.getConnection();
+			sql = "select max(num) from votelist";
+			rs = con.createStatement().executeQuery(sql);
+			if(rs.next()) {
+				max = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return max;
+	}
+	
 	// 설문폼(투표하기)에 넣을 item들 가져오기
 	public ArrayList<String> getItem(int num) {
 		ArrayList<String> alist = new ArrayList<String>();
 		
 		try {
 			con = pool.getConnection();
+			if(num == 0) {
+				num = getMaxNum();
+			}
 			sql = "select item from voteitem where listnum=" + num;
 			rs = con.createStatement().executeQuery(sql);
 			while(rs.next()) {
@@ -93,6 +117,26 @@ public class VoteDao {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con);
+		}
+		return alist;
+	}
+	
+	public ArrayList<VoteList> getList() {
+		ArrayList<VoteList> alist = new ArrayList<VoteList>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from votelist order by num desc";
+			rs = con.createStatement().executeQuery(sql);
+			while(rs.next()) {
+				VoteList vlist = new VoteList();
+				vlist.setNum(rs.getInt(1));
+				vlist.setQuestion(rs.getString(2));
+				vlist.setSdate(rs.getString(3));
+				vlist.setEdate(rs.getString(4));
+				alist.add(vlist);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return alist;
 	}

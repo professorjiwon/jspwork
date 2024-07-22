@@ -3,8 +3,12 @@
 <%@ page import="ch09.*, java.util.*" %>
 <jsp:useBean id="vDao" class="ch09.VoteDao" />
 <%
-	VoteList vlist = vDao.getOneVote(1);
-	ArrayList<String> vItem = vDao.getItem(1);
+	int num = 0;
+	if(!(request.getParameter("num")==null || request.getParameter("num").equals(""))) {
+		num = Integer.parseInt(request.getParameter("num"));
+	}
+	VoteList vlist = vDao.getOneVote(num);
+	ArrayList<String> vItem = vDao.getItem(num);
 
 	int type = vlist.getType();
 %>
@@ -26,7 +30,7 @@
 <body>
 	<div class="voteFrom">
 		<h5 class="m50">설문폼</h5>
-		
+
 		<form action="voteFormProc.jsp" method="post">
 			<table class="table">
 				<tr>
