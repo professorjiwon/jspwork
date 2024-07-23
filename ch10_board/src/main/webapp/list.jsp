@@ -47,7 +47,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
@@ -57,7 +57,10 @@
 	.m50 {margin-top:50px;}
 	table {margin-top: 30px; width:800px;}
 	table th, table td {text-align:center;}
-	.a {text-decoration:none; color:black; cursor:pointer;}
+	/* .a {text-decoration:none; color:black; cursor:pointer;} */
+	a:link {text-decoration:none; color:rgb(53, 53, 53);}
+	a:hover {text-decoration:underline; color:coral; cursor:pointer;}
+	a:visited {text-decoration:none; color:black;}
 </style>
 <script>
 	function block(value) {
@@ -71,6 +74,11 @@
 	function list() {
 		/*  document.listFrm.action = "list.jsp"; */
 		document.listFrm.submit();
+	}
+	function read(num) {
+		document.readFrm.num.value=num;
+		document.readFrm.action="read.jsp";
+		document.readFrm.submit();
 	}
 </script>
 </head>
@@ -95,11 +103,24 @@
 			for(int i=0; i<listSize; i++) {
 				Board board = alist.get(i);
 				String rdate = board.getRegdate().substring(0,10);
-				
+				int depth = board.getDepth();
 		%>
 			<tr>
-				<td><%=board.getNum() %></td>
-				<td style="text-align:left;"><a href="read.jsp?num=<%=board.getNum() %>" class="a"><%=board.getSubject() %></a></td>
+				<%-- <td><%=board.getNum() %></td> --%>
+				<td>
+					<%=totalRecord-(nowPage-1)*numPerPage - i %>
+				</td>
+				<td style="text-align:left;">
+		<%
+					if(depth > 0) {
+						for(int j=0; j<depth; j++) {
+							out.print("&emsp;");
+						}
+						out.print("↳");
+					}
+		%>
+					<a href="javascript:read('<%=board.getNum() %>')" class="a"><%=board.getSubject() %></a>
+				</td>
 				<td><%=board.getName() %></td>
 				<td><%=rdate %></td>
 				<td><%=board.getCount() %></td>
@@ -126,7 +147,7 @@
 					}
 					for(; pageStart<pageEnd; pageStart++) {
 			%>
-						<a href="javascript:pageing('<%=pageStart %>')">[<%=pageStart %>]</a>
+						<a href="javascript:pageing('<%=pageStart %>')" class="a">[<%=pageStart %>]</a>
 			<%			
 					}
 					if(totalBlock > nowBlock) {
@@ -167,18 +188,12 @@
 		</form>
 		
 		<!-- 사용자가 만약 [2]를 누르면 2번째 페이지 보여주기 -->
-		<form name="readFrm" action="list.jsp">
+		<form name="readFrm">
 			<input type="hidden" name="num">
 			<input type="hidden" name="nowPage" value="<%=nowPage %>">
 			<input type="hidden" name="keyField" value="<%=keyField %>">
 			<input type="hidden" name="keyWord" value="<%=keyWord %>">
 		</form>
-		
 	</div>
-	<br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-

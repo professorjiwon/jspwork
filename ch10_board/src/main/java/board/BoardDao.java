@@ -84,8 +84,6 @@ public class BoardDao {
 			if(rs.next())
 				totalCount = rs.getInt(1);
 			
-			System.out.println("totalCount : " + totalCount);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
