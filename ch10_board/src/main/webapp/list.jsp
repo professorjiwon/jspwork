@@ -18,10 +18,14 @@
 	int listSize = 0;		// 현재 읽어온 게시물의 수
 	
 	start = (nowPage * numPerPage) - numPerPage + 1;  // 각 페이지당 시작번호
-	end = nowPage * numPerPage;
+	end = nowPage * numPerPage;							// 각 페이지당 끝나는 번호
+	totalRecord = bDao.getTotalCount();
+	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);	// 전체 페이지 수
+	nowBlock = (int)Math.ceil((double)nowPage / pagePerBlock);		// 현재 속한 블럭
+	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);	// 전체 블럭 계산
 	
-	         
-	        		   
+	String keyField = null;
+	String keyWord = null;
 %>  
 <!DOCTYPE html>
 <html>
@@ -45,7 +49,7 @@
 		<h2 class="m50">JSPBoard</h2><p/>
 		<table class="table">
 			<tr>
-				<td colspan="5" style="text-align:left;">Total : </td>
+				<td colspan="5" style="text-align:left;">Total : <%=totalRecord %>Articles <font color="red">(<%=nowPage %>/<%=totalPage %>)</font></td>
 			</tr>		
 			<tr>
 				<th width="10%">번호</th>
@@ -55,9 +59,10 @@
 				<th width="10%">조회수</th>
 			</tr>
 			<%
-			ArrayList<Board> alist = bDao.getBoardList();
+			ArrayList<Board> alist = bDao.getBoardList(keyField,keyWord,start,end);
+			listSize = alist.size();
 		
-			for(int i=0; i<alist.size(); i++) {
+			for(int i=0; i<listSize; i++) {
 				Board board = alist.get(i);
 				String rdate = board.getRegdate().substring(0,10);
 				
