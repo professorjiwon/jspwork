@@ -93,6 +93,48 @@ public class BoardDao {
 	}
 	
 	
+	// 조회수 증가
+	public void upCount(int num) {
+		try {
+			con = pool.getConnection();
+			sql = "update board set count = count+1 where num=" + num;
+			con.createStatement().executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+	}
+	
+	// 게시물 1행 얻어오기
+	public Board getOneBoard(int num) {
+		Board board = new Board();
+		
+		try {
+			con = pool.getConnection();
+			sql = "select * from board where num=" + num;
+			rs = con.createStatement().executeQuery(sql);
+			if(rs.next()) {
+				board.setNum(rs.getInt("num"));
+				board.setName(rs.getString("name"));
+				board.setSubject(rs.getString("subject"));
+				board.setContent(rs.getString("content"));
+				board.setPos(rs.getInt("pos"));
+				board.setRef(rs.getInt("ref"));
+				board.setDepth(rs.getInt("depth"));
+				board.setRegdate(rs.getString("regdate"));
+				board.setPass(rs.getString("pass"));
+				board.setIp(rs.getString("ip"));
+				board.setCount(rs.getInt("count"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return board;
+	}
+		
 	// 게시물 총 레코드수
 	public int getTotalCount2() {
 		int totalCount = 0;

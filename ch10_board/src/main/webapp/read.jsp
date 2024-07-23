@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="board.*" %>
+<jsp:useBean id="bDao" class="board.BoardDao" />
+<%
+	request.setCharacterEncoding("UTF-8");
+	int num = Integer.parseInt(request.getParameter("num"));
+	String nowPage = request.getParameter("nowPage");
+	String keyField = request.getParameter("keyField");
+	String keyWord = request.getParameter("keyWord");
+	
+	bDao.upCount(num);
+	Board board = bDao.getOneBoard(num);
+	session.setAttribute("bean", board);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,21 +37,22 @@
 		</tr>
 		<tr>
 			<td width="15%" class="col">이름</td>
-			<td width="35%" class="col2"></td>
+			<td width="35%" class="col2"><%=board.getName() %></td>
 			<td width="15%" class="col">등록날짜</td>
-			<td width="35%" class="col2"></td>
+			<td width="35%" class="col2"><%=board.getRegdate().substring(0,10) %></td>
 		</tr>
 		<tr>
 			<td width="15%" class="col">제목</td>
-			<td colspan="3" class="col2"></td>
+			<td colspan="3" class="col2"><%=board.getSubject() %></td>
 		</tr>
 		<tr>
 			<td colspan="4" style="height:120px; text-align:left;">
 				내용 :<br>
+				<%=board.getContent() %>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4" style="text-align:right;">로 부터 글을 남기셨습니다 / 조회수 </td>
+			<td colspan="4" style="text-align:right;"><%=board.getIp() %>로 부터 글을 남기셨습니다 / 조회수 : <%=board.getCount() %> </td>
 		</tr>
 		<tr>
 			<td colspan="4"><hr><br>
