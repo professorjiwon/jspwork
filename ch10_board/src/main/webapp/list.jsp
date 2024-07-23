@@ -3,6 +3,7 @@
 <%@ page import="java.util.*, board.*" %>
 <jsp:useBean id="bDao" class="board.BoardDao" />
 <%
+	request.setCharacterEncoding("UTF-8");
 	int totalRecord = 0;	// 전체 레코드 수(board테이블의 전체 행의 수)
 	int numPerPage = 10;	// 1page에 보여줄 레코드 수
 	int pagePerBlock = 5;	// 블록당 페이지 수 = [1][2][3][4][5] 
@@ -37,14 +38,10 @@
 	
 	start = (nowPage * numPerPage) - numPerPage + 1;  // 각 페이지당 시작번호
 	end = nowPage * numPerPage;							// 각 페이지당 끝나는 번호
-	totalRecord = bDao.getTotalCount();
+	totalRecord = bDao.getTotalCount(keyField, keyWord);
 	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);	// 전체 페이지 수
 	nowBlock = (int)Math.ceil((double)nowPage / pagePerBlock);		// 현재 속한 블럭
 	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);	// 전체 블럭 계산
-	
-	
-			
-
 %>  
 <!DOCTYPE html>
 <html>
@@ -170,7 +167,7 @@
 		</form>
 		
 		<!-- 사용자가 만약 [2]를 누르면 2번째 페이지 보여주기 -->
-		<form name="readFrm">
+		<form name="readFrm" action="list.jsp">
 			<input type="hidden" name="num">
 			<input type="hidden" name="nowPage" value="<%=nowPage %>">
 			<input type="hidden" name="keyField" value="<%=keyField %>">
@@ -178,6 +175,7 @@
 		</form>
 		
 	</div>
+	<br><br><br><br><br><br><br>
 </body>
 </html>
 
