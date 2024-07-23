@@ -43,6 +43,11 @@
 	table th, table td {text-align:center;}
 	.a {text-decoration:none; color:black; cursor:pointer;}
 </style>
+<script>
+	function block(value) {
+		document.readFrm.nowPage.value=<%=pagePerBlock%>*(value-1)+1;
+	}
+</script>
 </head>
 <body>
 	<div>
@@ -83,7 +88,34 @@
 			</tr>
 	
 			<tr>
-				<td colspan="3">[1]</td>
+				<td colspan="3">
+			<%
+				int pageStart = (nowBlock-1) * pagePerBlock + 1;   // 어디블록 속하는지에 따른 첫번째 페이지 1블록=1, 2블록=6, 3블럭=11
+			
+				// 1블럭=5, 2블럭=10, 3블럭=15
+				
+				int pageEnd	= pageStart + pagePerBlock <= totalPage	? (pageStart + pagePerBlock) : totalPage + 1;	// 어디블록 속하는지에 따른 마지막 페이지  1블럭=5, 2블럭=10, 3블럭=15
+			
+				if(totalPage != 0) {
+					if(nowBlock > 1) {
+			%>
+						<a href="javascript:block('<%=nowBlock-1 %>')">prev...</a>&emsp;
+			<%
+					}
+					for(; pageStart<pageEnd; pageStart++) {
+			%>
+						<a href="javascript:pageing('<%=pageStart %>')">[<%=pageStart %>]</a>
+			<%			
+					}
+					if(totalBlock > nowBlock) {
+			%>
+						<a href="javascript:block('<%=nowBlock+1 %>')">...next</a>&emsp;
+			<%			
+					}
+				}
+			
+			%>
+				</td>
 				<td colspan="2" style="text-align:right;">
 					<a href="" class="a">[글쓰기]</a>&emsp;
 					<a href="" class="a">[처음으로]</a>
