@@ -17,6 +17,10 @@
 	int end = 0;			// 1page에 보여줄 레코드의 갯수(보통은 10개, 맨 마지막page는 전체레코드수에 따라 달라짐)
 	int listSize = 0;		// 현재 읽어온 게시물의 수
 	
+	if(request.getParameter("nowPage") != null) {
+		nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	}
+	
 	start = (nowPage * numPerPage) - numPerPage + 1;  // 각 페이지당 시작번호
 	end = nowPage * numPerPage;							// 각 페이지당 끝나는 번호
 	totalRecord = bDao.getTotalCount();
@@ -26,6 +30,8 @@
 	
 	String keyField = null;
 	String keyWord = null;
+			
+
 %>  
 <!DOCTYPE html>
 <html>
@@ -46,6 +52,11 @@
 <script>
 	function block(value) {
 		document.readFrm.nowPage.value=<%=pagePerBlock%>*(value-1)+1;
+		document.readFrm.submit();
+	}
+	function pageing(page) {
+		document.readFrm.nowPage.value=page;
+		document.readFrm.submit();
 	}
 </script>
 </head>
@@ -91,9 +102,6 @@
 				<td colspan="3">
 			<%
 				int pageStart = (nowBlock-1) * pagePerBlock + 1;   // 어디블록 속하는지에 따른 첫번째 페이지 1블록=1, 2블록=6, 3블럭=11
-			
-				// 1블럭=5, 2블럭=10, 3블럭=15
-				
 				int pageEnd	= pageStart + pagePerBlock <= totalPage	? (pageStart + pagePerBlock) : totalPage + 1;	// 어디블록 속하는지에 따른 마지막 페이지  1블럭=5, 2블럭=10, 3블럭=15
 			
 				if(totalPage != 0) {
@@ -118,7 +126,7 @@
 				</td>
 				<td colspan="2" style="text-align:right;">
 					<a href="" class="a">[글쓰기]</a>&emsp;
-					<a href="" class="a">[처음으로]</a>
+					<a href="javascript:list();" class="a">[처음으로]</a>
 				</td>
 			</tr>
 		</table>
@@ -137,6 +145,23 @@
 				</tr>
 			</table>
 		</form>
+		
+		<form>
+			<input type="hidden" name="reload" value="true">
+			<input type="hidden" name="nowPage" value="1">
+		</form>
+		
+		<form name="readFrm">
+			<input type="hidden" name="num">
+			<input type="hidden" name="nowPage" value="<%=nowPage %>">
+			<input type="hidden" name="keyField" value="<%=keyField %>">
+			<input type="hidden" name="keyWord" value="<%=keyWord %>">
+		</form>
+		
 	</div>
 </body>
 </html>
+
+
+
+
