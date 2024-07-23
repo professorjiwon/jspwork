@@ -17,6 +17,20 @@
 	int end = 0;			// 1page에 보여줄 레코드의 갯수(보통은 10개, 맨 마지막page는 전체레코드수에 따라 달라짐)
 	int listSize = 0;		// 현재 읽어온 게시물의 수
 	
+	String keyField = "", keyWord = "";
+	if(request.getParameter("keyWord") != null) {
+		keyField = request.getParameter("keyField");
+		keyWord = request.getParameter("keyWord");
+	}
+	
+	/* [처음으로]를 누르면 keyField와 keyWord에 들어있는값 지우기 */
+	if(request.getParameter("reload") != null) {
+		if(request.getParameter("reload").equals("true")){
+			keyField = "";
+			keyWord = "";
+		}
+	}
+	
 	if(request.getParameter("nowPage") != null) {
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	}
@@ -28,8 +42,7 @@
 	nowBlock = (int)Math.ceil((double)nowPage / pagePerBlock);		// 현재 속한 블럭
 	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);	// 전체 블럭 계산
 	
-	String keyField = null;
-	String keyWord = null;
+	
 			
 
 %>  
@@ -57,6 +70,10 @@
 	function pageing(page) {
 		document.readFrm.nowPage.value=page;
 		document.readFrm.submit();
+	}
+	function list() {
+		/*  document.listFrm.action = "list.jsp"; */
+		document.listFrm.submit();
 	}
 </script>
 </head>
@@ -146,11 +163,13 @@
 			</table>
 		</form>
 		
-		<form>
+		<!-- 처음으로 누르면 화면 reload -->
+		<form name="listFrm">
 			<input type="hidden" name="reload" value="true">
 			<input type="hidden" name="nowPage" value="1">
 		</form>
 		
+		<!-- 사용자가 만약 [2]를 누르면 2번째 페이지 보여주기 -->
 		<form name="readFrm">
 			<input type="hidden" name="num">
 			<input type="hidden" name="nowPage" value="<%=nowPage %>">
