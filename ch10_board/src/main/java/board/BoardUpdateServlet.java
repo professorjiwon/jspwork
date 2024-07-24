@@ -34,10 +34,10 @@ public class BoardUpdateServlet extends HttpServlet {
 			String url = "read.jsp?nowPage=" + nowPage + "&num=" + upBean.getNum();
 			response.sendRedirect(url);
 		} else {
-			out.print("<script>");
-			out.print("   alert('비밀번호가 맞지 않습니다.')");
-			out.print("   history.back();");
-			out.print("</script>");
+			out.println("<script>");
+			out.println("		alert('비밀번호가 맞지 않습니다.')");
+			out.println("		history.back()");
+			out.println("</script>");
 		}
 		
 	}
