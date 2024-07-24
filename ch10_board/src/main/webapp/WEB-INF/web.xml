@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>BoardUpdateServlet</display-name>
+    <servlet-name>BoardUpdateServlet</servlet-name>
+    <servlet-class>board.BoardUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardUpdateServlet</servlet-name>
+    <url-pattern>/boardUpdate</url-pattern>
+  </servlet-mapping>
 </web-app>

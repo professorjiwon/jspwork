@@ -160,6 +160,25 @@ public class BoardDao {
 		return flag;
 	}
 	
+	// 게시물 수정
+	public void updateBoard(Board board) {
+		
+		try {
+			con = pool.getConnection();
+			sql = "update board set name=?, subject=?, content=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board.getName());
+			pstmt.setString(2, board.getSubject());
+			pstmt.setString(3, board.getContent());
+			pstmt.setInt(4, board.getNum());
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+	}
+	
 	// 게시물 총 레코드수
 	public int getTotalCount2() {
 		int totalCount = 0;

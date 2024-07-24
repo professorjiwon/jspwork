@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="pass"> 수정시에는 비밀번호가 필요합니다.</td>
+				<td><input type="password" name="pass" required> 수정시에는 비밀번호가 필요합니다.</td>
 			</tr>
 			<tr>
 				<td colspan="2"><br><br><hr></td>
@@ -54,6 +54,8 @@
 				</td>
 			</tr>
 		</table>
+		<input type="hidden" name="num" value="<%=num %>">
+		<input type="hidden" name="nowPage" value="<%=nowPage %>">
 	</form>  
 </body>
 </html>
