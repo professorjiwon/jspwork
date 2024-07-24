@@ -179,6 +179,50 @@ public class BoardDao {
 		}
 	}
 	
+	// 답변의 위치값을 증가
+	public void replyPosUpdate(int ref, int pos) {
+		
+		try {
+			con = pool.getConnection();
+			sql = "update board set pos = pos+1 where ref = ? and pos > ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ref);
+			pstmt.setInt(2, pos);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+	}
+	
+	// 게시물 댓글
+	public void replyBoard(Board board) {
+		
+		try {
+			con = pool.getConnection();
+			sql = "insert into board values(seq_board.nextval,?,?,?,?,?,?,sysdate,?,?,default)";
+			
+			int depth = board.getDepth() + 1;	
+			int pos = board.getPos() + 1;
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board.getName());
+			pstmt.setString(2, board.getSubject());
+			pstmt.setString(3, board.getContent());
+			pstmt.setInt(4, pos);
+			pstmt.setInt(5, board.getRef());
+			pstmt.setInt(6, depth);
+			pstmt.setString(7, board.getPass());
+			pstmt.setString(8, board.getIp());
+			pstmt.executeUpdate();		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+	}
+	
 	// 게시물 총 레코드수
 	public int getTotalCount2() {
 		int totalCount = 0;

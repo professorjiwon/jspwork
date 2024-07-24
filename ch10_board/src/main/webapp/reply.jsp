@@ -38,8 +38,8 @@
 				<td>내용</td>
 				<td>
 					<textarea name="content" rows="10" cols="50">
-						<%=board.getContent() %>
-						========= 댓글을 작성하세요 ===========
+  <%=board.getContent() %>
+  ========= 댓글을 작성하세요 ===========
 					</textarea>
 				</td>
 			</tr>
