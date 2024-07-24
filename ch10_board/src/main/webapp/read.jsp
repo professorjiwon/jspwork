@@ -29,6 +29,11 @@
 	a {text-decoration:none; color:black;}
 	a:hover {text-decoration:underline; color:coral; cursor:pointer;}
 </style>
+<script>
+	function list() {
+		document.listFrm.submit();
+	}
+</script>
 </head>
 <body>
 		<table>
@@ -56,12 +61,28 @@
 		</tr>
 		<tr>
 			<td colspan="4"><hr><br>
-				[ <a href="">리스트</a> | 
-				<a href=""> 수 정</a> | 
-				<a href="">답 변</a> | 
-				<a href=""> 삭 제</a> ]
+				[ <a href="javascript:list()">리스트</a> | 
+				<a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>">수 정</a> | 
+				<a href="reply.jsp?nowPage=<%=nowPage%>">답 변</a> | 
+				<a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>"> 삭 제</a> ]
 			</td>
 		</tr>
 	</table>
+	<form name="listFrm" action="list.jsp">
+		<input type="hidden" name="nowPage" value="<%=nowPage %>">
+		<%
+		if( !(keyWord==null || keyWord.equals("")) ) {
+		%>
+			<input type="hidden" name="keyField" value="<%=keyField %>">
+			<input type="hidden" name="keyWord" value="<%=keyWord %>">
+		<%
+		}
+		%>
+	</form>
 </body>
 </html>
+
+
+
+
+
