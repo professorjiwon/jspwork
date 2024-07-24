@@ -21,8 +21,8 @@
 
 <style>
 	* {margin: 0 auto;}
-	table {margin-top: 50px; width:800px; }
-	table th {height:40px; background-color: #B778FF;}
+	table {margin-top: 50px; width:600px; }
+	table th {height:40px; background-color: #B778FF; color:white;}
 	table td {text-align:center; height:30px;}
 	.col {background-color: #E8D9FF;}
 	.col2 {background-color: #F6F6F6;}
@@ -48,11 +48,11 @@
 		</tr>
 		<tr>
 			<td width="15%" class="col">제목</td>
-			<td colspan="3" class="col2"><%=board.getSubject() %></td>
+			<td colspan="3" class="col2" style="text-align:left; padding-left:10px;"><%=board.getSubject() %></td>
 		</tr>
 		<tr>
 			<td colspan="4" style="height:120px; text-align:left;">
-				내용 :<br>
+				본문내용 :<br>
 				<%=board.getContent() %>
 			</td>
 		</tr>
