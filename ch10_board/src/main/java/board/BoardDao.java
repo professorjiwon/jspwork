@@ -134,7 +134,32 @@ public class BoardDao {
 		}
 		return board;
 	}
+	
+	// 게시물 등록하기
+	public boolean insertBoard(Board board) {
+		boolean flag = false;
 		
+		try {
+			con = pool.getConnection();
+			sql = "insert into board values(SEQ_BOARD.NEXTVAL,?,?,?,0,SEQ_BOARD.currval,0,sysdate,?,?,default)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board.getName());
+			pstmt.setString(2, board.getSubject());
+			pstmt.setString(3, board.getContent());
+			pstmt.setString(4, board.getPass());
+			pstmt.setString(5, board.getIp());
+			
+			if(pstmt.executeUpdate() == 1)
+				flag = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return flag;
+	}
+	
 	// 게시물 총 레코드수
 	public int getTotalCount2() {
 		int totalCount = 0;
