@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <style>
 	table{width:600px; margin-top: 50px;}
-	table th{background-color:#DBC000; height:40px; color:white;}
+	table th{background-color:#DBC000; height:40px;}
 	table td {height:30px;}
 	textarea {resize: none;}
 </style>
