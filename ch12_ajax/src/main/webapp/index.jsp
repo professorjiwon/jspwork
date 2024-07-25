@@ -121,7 +121,6 @@
 		})
 	</script>
 	
-	
 	<form name="idCheck" action="idCheck.me">
 		<p>
 		아이디 : <input name="id" required>&emsp;
@@ -129,7 +128,7 @@
 		</p>
 		<input type="submit" value="회원가입" disabled>
 	</form>
-	
+<!-- 	
 	<script type="text/javascript">
 		$(() => {
 			$("#btn2").click(function() {
@@ -139,11 +138,63 @@
 					data : {id : $idInput.val()},
 					success : function(result) {
 						console.log(result);
+						if(result == 'idN') {
+							alert('이미 사용중이거나 탈퇴한 아이디 입니다.');
+							$idInput.val('');
+							$idInput.focus();
+						} else {
+							if(confirm("사용가능한 아이디 입니다. 사용하시겠습니까?")) {
+								$("form :submit").removeAttr("disabled");
+								$idInput.attr("readonly", true);
+							} else {
+								$idInput.focus();
+							}
+						}
 					},
 					error : function() {
 						console.log("아이디 중복체크 ajax통신 실패");
 					}
 				})
+			})
+		})
+	</script> 
+-->
+	
+	<form name="regFrm" action="idCheck.me" id="enrollForm">
+		<p>아이디 : <input name="id" id="id" required></p>
+		<div id="checkResult" style="font-size:0.8em; display:none"></div>
+		<button type="submit" disabled>회원가입</button>&emsp;
+		<button type="reset">초기화</button>
+	</form>
+	
+	<script>
+		$(() => {
+			const $idInput = $("#id");
+			$idInput.keyup(function() {
+				if($idInput.val().length >= 3) {
+					$.ajax({
+						url: "idCheck.me",
+						data : {id : $idInput.val()},
+						success : function(result) {
+							console.log(result);
+							if(result == 'idN') {
+								$("#checkResult").show();
+								$("#checkResult").css("color","red").text("중복된 아이디가 존재합니다. 다시 입력하세요");
+								$("#enrollForm :submit").attr("disabled", true);
+							} else {
+								$("#checkResult").show();
+								$("#checkResult").css("color","green").text("멋진 아이디 입니다.");
+								$("#enrollForm :submit").attr("disabled", false);
+							}
+						},
+						error : function() {
+							console.log("아이디 중복체크 ajax 통신 실패");
+						}
+					})
+				} else {
+					$("#checkResult").hide();
+					$("#enrollForm :submit").attr("disabled", true);
+				}
 			})
 		})
 	</script>
