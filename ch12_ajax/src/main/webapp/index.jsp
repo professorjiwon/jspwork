@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AJAX</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<h1>AJAX개요</h1>
@@ -90,5 +91,46 @@
 	- processData : 서버로 보내는 값에 대한 형태 설정 여부(기본 데이터를 원하는 경우 false설정)
 	- timeout : 서버 요청 시 응답 대기 시간(milisecond)
 	</pre>
+	
+	<h1>jQuery 방식을 이용한 AJAX 테스트</h1>
+	
+	<h3>1. 버튼 클릭시 get방식으로 서버에 요청 및 응답</h3>
+	
+	입력 : <input id="input1">&emsp; <button id="btn1">전송</button>
+	<br>
+	
+	응답 : <span id="output1">응답없음</span>
+	
+	<script>
+		$(() => {
+			$("#btn1").click(function() {
+				$.ajax({
+					url : "ajax1.do",
+					data : {input : $("#input1").val()},
+					type : "get",
+					success : function() {
+						console.log("ajax통신 성공");
+					},
+					error : function() {
+						console.log("ajax통신 실패");
+					}
+				})
+			})
+		})
+	</script>
+	
+	
+	
+	
+	
+	
+	<br><br><br><br><br><br><br><br><br>
 </body>
 </html>
+
+
+
+
+
+
+
