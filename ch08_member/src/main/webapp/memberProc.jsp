@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="mem" class="ch08.Member" />
-<jsp:useBean id="mMgr" class="ch08.MemberMgr" />
+<jsp:useBean id="mem" class="member.Member" />
+<jsp:useBean id="mMgr" class="member.MemberMgr" />
 <jsp:setProperty name="mem" property="*" />
 <%
 	boolean result = mMgr.insertMember(mem);

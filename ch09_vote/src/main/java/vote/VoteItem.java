@@ -1,4 +1,4 @@
-package ch09;
+package vote;
 
 import java.util.Arrays;
 

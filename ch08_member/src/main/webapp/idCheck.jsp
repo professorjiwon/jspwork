@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="mMgr" class="ch08.MemberMgr"/>
+<jsp:useBean id="mMgr" class="member.MemberMgr"/>
 <%
 	String id = request.getParameter("id");
 	boolean result = mMgr.checkId(id);

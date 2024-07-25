@@ -1,4 +1,4 @@
-package ch08;
+package member;
 
 import java.sql.*;
 

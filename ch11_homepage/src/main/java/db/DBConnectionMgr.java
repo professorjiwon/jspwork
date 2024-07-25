@@ -22,7 +22,7 @@
  * TO THE SOFTWARE.
  *
  */
-package ch08;
+package db;
 
 import java.sql.*;
 import java.util.Properties;

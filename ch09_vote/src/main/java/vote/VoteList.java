@@ -1,4 +1,4 @@
-package ch09;
+package vote;
 
 public class VoteList {
 	private int num;
