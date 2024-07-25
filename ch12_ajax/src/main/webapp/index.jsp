@@ -108,8 +108,10 @@
 					url : "ajax1.do",
 					data : {input : $("#input1").val()},
 					type : "get",
-					success : function() {
+					success : function(data) {
 						console.log("ajax통신 성공");
+						console.log(data);
+						$("#output1").text(data);
 					},
 					error : function() {
 						console.log("ajax통신 실패");
@@ -119,6 +121,32 @@
 		})
 	</script>
 	
+	
+	<form name="idCheck" action="idCheck.me">
+		<p>
+		아이디 : <input name="id" required>&emsp;
+			    <input type="button" value="ID중복확인" id="btn2">
+		</p>
+		<input type="submit" value="회원가입" disabled>
+	</form>
+	
+	<script type="text/javascript">
+		$(() => {
+			$("#btn2").click(function() {
+				const $idInput = $("form input[name=id]");
+				$.ajax({
+					url : "idCheck.me",
+					data : {id : $idInput.val()},
+					success : function(result) {
+						console.log(result);
+					},
+					error : function() {
+						console.log("아이디 중복체크 ajax통신 실패");
+					}
+				})
+			})
+		})
+	</script>
 	
 	
 	
