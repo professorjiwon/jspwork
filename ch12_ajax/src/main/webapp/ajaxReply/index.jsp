@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <title>댓글 보기</title>
 <style>
 	body {text-align:center;}
@@ -23,6 +24,7 @@
 			</tr>
 		</thead>
 		<tbody>
+		
 		</tbody>
 	</table>
 	
@@ -36,7 +38,15 @@
 				url: "rlist.bo",
 				data: {bnum: 1},  //원글의 num값을 넘겨준다
 				success:function(result){
-					console.log(result);
+					let value = "";
+					for(let i=0; i<result.length; i++) {
+						value += "<tr>"
+							  + "	<td>" + result[i].no + "</td>"
+							  + "	<td>" + result[i].content + "</td>"
+							  + "	<td>" + result[i].redate.substring(0,10) + "</td>"
+							  + "</tr>";
+					}
+					$("table tbody").html(value);
 				},
 				error:function() {
 					console.log("ajax 통신 실패");
