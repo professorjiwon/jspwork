@@ -207,7 +207,7 @@
 	이름 : <input type="text" id="name"><br>
 	나이 : <input type="number" id="age"><br><br>
 	<button id="btn3">전송</button><br><br>
-	
+<!-- 
 	응답 : <label id="output3"></label>
 	
 	<script type="text/javascript">
@@ -222,10 +222,42 @@
 					type : "post",
 					success : function(result) {
 						console.log(result)
-						$("#output3").text(result);
+						$("#output3").html(""result);
 						$("#name").val("");
 						$("#age").val("");
 
+					},
+					error : function() {
+						console.log("ajax 통신 실패");
+					}
+				})
+			})
+		})
+	</script>
+ -->	
+	<ul id="output4">
+	</ul>
+	
+	<script type="text/javascript">
+		$(() => {
+			$("#btn3").click(function() {
+				$.ajax({
+					url : 'ajax2.do',
+					data : {
+						name : $("#name").val(),
+						age : $("#age").val()
+					},
+					type : "post",
+					success : function(result) {
+						console.log(result)
+						console.log(result[0])
+						console.log(result[1])
+						
+						const value = "<li>이름 : " + result[0] + "<li>"
+									+ "<li>나이 : " + result[1] + "<li>"
+						$("#output4").html(""result);
+						$("#name").val("");
+						$("#age").val("");
 					},
 					error : function() {
 						console.log("ajax 통신 실패");
