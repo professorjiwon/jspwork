@@ -39,4 +39,24 @@
     <servlet-name>AjaxServletController2</servlet-name>
     <url-pattern>/ajax2.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServletController5</display-name>
+    <servlet-name>AjaxServletController5</servlet-name>
+    <servlet-class>ajax01.AjaxServletController5</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServletController5</servlet-name>
+    <url-pattern>/ajax5.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServletController6</display-name>
+    <servlet-name>AjaxServletController6</servlet-name>
+    <servlet-class>ajax01.AjaxServletController6</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServletController6</servlet-name>
+    <url-pattern>/ajax6.do</url-pattern>
+  </servlet-mapping>
 </web-app>

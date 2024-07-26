@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import org.json.simple.JSONArray;
+import org.json.simple.*;
 
 public class AjaxServletController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,6 +40,7 @@ public class AjaxServletController2 extends HttpServlet {
 		 */
 		
 		// v3.1  JSONArray 배열로 반환
+		/*
 		JSONArray jArr = new JSONArray();
 		jArr.add(name);
 		jArr.add(age);
@@ -47,14 +48,14 @@ public class AjaxServletController2 extends HttpServlet {
 		// response.setContentType("text/html; charset=utf-8");  => jArr을 반환해 주어도 문자열로 들어감
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jArr);
+		*/
+		
+		// v3.2  JSONObject 객체로 반환
+		JSONObject jObj = new JSONObject();
+		jObj.put("name", name);
+		jObj.put("age", age);
+		
+		response.setContentType("application/json; charset=utf-8");
+		response.getWriter().print(jObj);
 	}
-
 }
-
-
-
-
-
-
-
-

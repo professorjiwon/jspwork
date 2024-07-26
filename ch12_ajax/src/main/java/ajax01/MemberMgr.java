@@ -1,6 +1,7 @@
 package ajax01;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MemberMgr {
 	private DBConnectionMgr pool;
@@ -93,11 +94,50 @@ public class MemberMgr {
 		return flag;
 	}
 	
+	public Member getMember(String id) {
+		Member bean = new Member();
+		
+		try {
+			con=pool.getConnection();
+			sql = "select * from member where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setId(rs.getString("id"));
+				bean.setName(rs.getString("name"));
+				bean.setGender(rs.getString("gender"));
+				bean.setEmail(rs.getString("email"));
+			}			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return bean;
+	}
 	
-	
-	
-	
-	
-	
-	
+	public ArrayList<Member> getAllMember() {
+		ArrayList<Member> alist = new ArrayList<Member>();
+		
+		try {
+			con=pool.getConnection();
+			sql = "select * from member";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Member bean = new Member();
+				bean.setId(rs.getString("id"));
+				bean.setName(rs.getString("name"));
+				bean.setGender(rs.getString("gender"));
+				bean.setEmail(rs.getString("email"));
+				alist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return alist;
+	}
 }

@@ -127,4 +127,5 @@ public class Member {
 				+ ", email=" + email + ", zipcode=" + zipcode + ", address=" + address + ", detail_address="
 				+ detail_address + ", hobby=" + Arrays.toString(hobby) + ", job=" + job + "]";
 	}
+
 }
