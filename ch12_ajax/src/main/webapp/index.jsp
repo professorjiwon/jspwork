@@ -253,8 +253,9 @@
 						console.log(result[0])
 						console.log(result[1])
 						
-						const value = "<li>이름 : " + result[0] + "<li>"
-									+ "<li>나이 : " + result[1] + "<li>"
+						const value = "<li>이름 : " + result[0] + "</li>"
+									+ "<li>나이 : " + result[1] + "</li>";
+									
 						$("#output4").html(value);
 						$("#name").val("");
 						$("#age").val("");

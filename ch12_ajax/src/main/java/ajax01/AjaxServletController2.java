@@ -44,7 +44,7 @@ public class AjaxServletController2 extends HttpServlet {
 		jArr.add(name);
 		jArr.add(age);
 		
-		// response.setContentType("text/html; charset=utf-8");
+		// response.setContentType("text/html; charset=utf-8");  => jArr을 반환해 주어도 문자열로 들어감
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jArr);
 	}
