@@ -255,7 +255,7 @@
 						
 						const value = "<li>이름 : " + result[0] + "<li>"
 									+ "<li>나이 : " + result[1] + "<li>"
-						$("#output4").html(""result);
+						$("#output4").html(value);
 						$("#name").val("");
 						$("#age").val("");
 					},
