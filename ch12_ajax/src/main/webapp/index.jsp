@@ -348,6 +348,17 @@
 					url : "ajax6.do",
 					success : function(result) {
 						console.log(result);
+						
+						let value = "";
+						for(let i=0; i<result.length; i++) {
+							value += "<tr>"
+								  + "	<td>" + result[i].id + "</td>"
+								  + "	<td>" + result[i].name + "</td>"
+								  + "	<td>" + result[i].gender + "</td>"
+								  + "	<td>" + result[i].email + "</td>"
+								  + "</tr>";
+						}
+						$("#output6 tbody").html(value);	
 					},
 					error : function() {
 						console.log("ajax 통신 실패");
@@ -356,19 +367,5 @@
 			})
 		})
 	</script>
-	
-	
-	
-	
-	
-	
-	<br><br><br><br><br><br><br><br><br>
 </body>
 </html>
-
-
-
-
-
-
-
