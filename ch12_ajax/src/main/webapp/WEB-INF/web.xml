@@ -59,4 +59,14 @@
     <servlet-name>AjaxServletController6</servlet-name>
     <url-pattern>/ajax6.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServletReplyList</display-name>
+    <servlet-name>AjaxServletReplyList</servlet-name>
+    <servlet-class>ajaxReply.AjaxServletReplyList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServletReplyList</servlet-name>
+    <url-pattern>/ajaxReply/rlist.bo</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -25,5 +25,29 @@
 		<tbody>
 		</tbody>
 	</table>
+	
+	<script type="text/javascript">
+		$(() => {
+			selectReplyList();
+		})
+		
+		function selectReplyList() {
+			$.ajax({
+				url: "rlist.bo",
+				data: {bnum: 1},  //원글의 num값을 넘겨준다
+				success:function(result){
+					console.log(result);
+				},
+				error:function() {
+					console.log("ajax 통신 실패");
+				}
+			})
+		}
+	</script>
 </body>
 </html>
+
+
+
+
+
