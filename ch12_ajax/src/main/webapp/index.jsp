@@ -128,6 +128,8 @@
 		</p>
 		<input type="submit" value="회원가입" disabled>
 	</form>
+	
+	
 <!-- 	
 	<script type="text/javascript">
 		$(() => {
@@ -203,8 +205,8 @@
 	
 	<h3>2. 버튼 클릭시 post방식으로 서버에 여러개의 데이터 전송 및 응답</h3>
 	이름 : <input type="text" id="name"><br>
-	나이 : <input type="number" id="age"><br>
-	<button id="btn3">전송</button>
+	나이 : <input type="number" id="age"><br><br>
+	<button id="btn3">전송</button><br><br>
 	
 	응답 : <label id="output3"></label>
 	
@@ -217,9 +219,13 @@
 						name : $("#name").val(),
 						age : $("#age").val()
 					},
-					type : post,
+					type : "post",
 					success : function(result) {
 						console.log(result)
+						$("#output3").text(result);
+						$("#name").val("");
+						$("#age").val("");
+
 					},
 					error : function() {
 						console.log("ajax 통신 실패");

@@ -29,4 +29,14 @@
     <servlet-name>AjaxServletIdCheck</servlet-name>
     <url-pattern>/idCheck.me</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServletController2</display-name>
+    <servlet-name>AjaxServletController2</servlet-name>
+    <servlet-class>ajax01.AjaxServletController2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServletController2</servlet-name>
+    <url-pattern>/ajax2.do</url-pattern>
+  </servlet-mapping>
 </web-app>
