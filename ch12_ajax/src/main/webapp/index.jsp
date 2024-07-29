@@ -120,7 +120,7 @@
 			})
 		})
 	</script>
-	
+
 	<form name="idCheck" action="idCheck.me">
 		<p>
 		아이디 : <input name="id" required>&emsp;
@@ -128,8 +128,6 @@
 		</p>
 		<input type="submit" value="회원가입" disabled>
 	</form>
-	
-	
 <!-- 	
 	<script type="text/javascript">
 		$(() => {
@@ -160,8 +158,8 @@
 			})
 		})
 	</script> 
--->
-	
+ -->
+
 	<form name="regFrm" action="idCheck.me" id="enrollForm">
 		<p>아이디 : <input name="id" id="id" required></p>
 		<div id="checkResult" style="font-size:0.8em; display:none"></div>
@@ -200,7 +198,7 @@
 			})
 		})
 	</script>
-	
+
 	<hr>
 	
 	<h3>2. 버튼 클릭시 post방식으로 서버에 여러개의 데이터 전송 및 응답</h3>
@@ -306,6 +304,7 @@
 						*/
 						
 						// GSON으로 받았을 때 
+						/*
 						const value = "<br>********** 검색 결과 **********<br>"
 							+ "ID : " + result.id + "<br>"
 							+ "이름 : " + result.name + "<br>"
@@ -313,6 +312,7 @@
 							+ "EMAIL : " + result.email;
 						
 						$("#output5").html(value);
+						*/
 					},
 					error : function() {
 						console.log("ajax 통신 실패");

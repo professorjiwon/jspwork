@@ -45,7 +45,9 @@ public class AjaxServletController5 extends HttpServlet {
 		Gson gson = new Gson();
 		gson.toJson(bean, response.getWriter());
 		*/
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(bean, response.getWriter());
+		
+		response.setContentType("application/json; charset=utf-8"); new
+		Gson().toJson(bean, response.getWriter());
+		 
 	}
 }
