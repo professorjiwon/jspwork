@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>OperationServlet</display-name>
+    <servlet-name>OperationServlet</servlet-name>
+    <servlet-class>com.tjoeun.controller.OperationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OperationServlet</servlet-name>
+    <url-pattern>/operation.do</url-pattern>
+  </servlet-mapping>
 </web-app>
