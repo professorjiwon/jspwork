@@ -28,6 +28,13 @@
 	 	1. com.tjoeun.controller / OperationServlet 만들기 : /operation.do, doGet()
 		2. views/01_EL/02_operation.jsp 파일 만들기
 	 -->
+	 
+	 <h1>* JSP Action Tag</h1>
+	 <p>xml 기술을 이용하여 기존의 jsp문법을 확장시키는 기술을 제공하는 태그들</p>
+	 <p>표준 액션 태그 : include와 forward</p>
+	 
+	 <h3>- 커스텀 액션태그</h3>
+	 <a href="views/02_customAction/jstl.jsp">JSTL</a>
 </body>
 </html>
 
