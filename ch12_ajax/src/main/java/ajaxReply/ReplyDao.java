@@ -37,4 +37,22 @@ public class ReplyDao {
 		}
 		return alist;
 	}
+	
+	public int insertReply(Reply bean) {
+		int result = 0;
+		try {
+			con = pool.getConnection();
+			sql = "insert into reply values(seq_reply.nextval,?,?,?,sysdate)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getContent());
+			pstmt.setInt(2, bean.getRef());
+			pstmt.setString(3, bean.getName());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con);
+		}
+		return result;
+	}
 }
