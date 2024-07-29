@@ -33,6 +33,8 @@
 	<script type="text/javascript">
 		$(() => {
 			selectReplyList();
+			
+			//setInterval(selectReplyList, 1000);
 		})
 		
 		function selectReplyList() {
@@ -73,15 +75,9 @@
 						console.log("ajax 통신 실패");
 					}
 				})
+				selectReplyList();
 			})
 		})
 	</script>
-	
-	
 </body>
 </html>
-
-
-
-
-
